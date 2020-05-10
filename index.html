@@ -36,17 +36,27 @@
     event.preventDefault();
     var APIKey = "096c47eea3eda324326ea249c70207ee";    
     var name = $("#citySearch").val();  
-    var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${name}appid=${APIKey}`;
+    var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${name}&appid=${APIKey}&units=imperial`;
   
     $.ajax({
             url: queryURL,
             method: 'GET',
         }).then(function (response) {
-        
-            console.log(queryURL);
-
+            // create a function that gets the current weather (current weather data call)
             console.log(response);
-            console.log(alert("search clicked"));
+            var city = response.name;
+            var temp = response.main.temp;
+            var humidity = response.main.humidity;
+            var windSpeed = response.wind.speed;         
+        // dynamically generate weather div
+            var bodyEl = $("body")
+            var weatherDiv = $("<div class='weather'>");
+            bodyEl.append(weatherDiv);
+            var pOne = $("<p>").text('City: ' + city);
+            pOne.appendTo(weatherDiv);    
+
+        // inside of that you're going to generate the city, date, temperature, humidity, wind speed
+
         })
 
     });
@@ -54,9 +64,8 @@
   
     
 
-    // create a function that gets the current weather (current weather data call)
-    // dynamically generate weather div
-    // inside of that you're going to generate the city, date, temperature, humidity, wind speed
+
+    
     
     // call the getUVIndex function to generate the UV index element
 
