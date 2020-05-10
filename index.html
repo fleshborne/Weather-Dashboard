@@ -21,18 +21,37 @@
     <!-- an input field for city searching -->
     <form class="userSearch" style="margin:auto;max-width:300px;float: left;">
        Search for a City:
-        <input type="text" placeholder="Search.." name="search">
-        <button type="submit"><i class="fa fa-search"></i></button>
+        <input type="text" id="citySearch" placeholder="Search.." name="search">
+        <button id="searchBtn" type="submit"><i class="fa fa-search"></i></button>
     <script
       src="https://code.jquery.com/jquery-3.5.1.min.js"
       integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
       crossorigin="anonymous"
     ></script>
     <script type="text/javascript">
+      // grab users input and store it in a variable (stateSearch)
     // api key and query url
-    //   var apiKey = "d8b2e7ff2dc6ad206bbaa850a623a8f4";
-    //   var queryUrl = ``;
-    // grab users input and store it in a variable (userSearch)
+  
+    $("#searchBtn").on("click", function (state){
+    var APIKey = "096c47eea3eda324326ea249c70207ee";    
+    var city = $("#citySearch").val();  
+    var queryUrl = `https://api.openweathermap.org/data/2.5/weather?q=${state}&appid=${APIKey}`;
+  
+    $.ajax({
+            url: queryUrl,
+            method: 'GET',
+        }).then(function (response) {
+        
+            console.log(queryUrl);
+
+            console.log(response);
+        })
+
+    });
+    
+  
+    
+
     // create a function that gets the current weather (current weather data call)
     // dynamically generate weather div
     // inside of that you're going to generate the city, date, temperature, humidity, wind speed
@@ -48,7 +67,7 @@
     // on page load, grab from local storage - grab the most recent search
     // if the users search exists in local storage dont append a new one, get from local storage
     //  in the getCurrentWeather function, check local storage for previous searches
-    
+
     
     </script>
   </body>
