@@ -19,9 +19,9 @@
       <div class="card-header">Weather Dashboard</div>
     </div>
     <!-- an input field for city searching -->
-    <form class="example" style="margin:auto;max-width:300px;float: left;">
+    <form class="userSearch" style="margin:auto;max-width:300px;float: left;">
        Search for a City:
-        <input type="text" placeholder="Search.." name="search2">
+        <input type="text" placeholder="Search.." name="search">
         <button type="submit"><i class="fa fa-search"></i></button>
     <script
       src="https://code.jquery.com/jquery-3.5.1.min.js"
@@ -32,6 +32,24 @@
     // api key and query url
     //   var apiKey = "d8b2e7ff2dc6ad206bbaa850a623a8f4";
     //   var queryUrl = ``;
+    // grab users input and store it in a variable (userSearch)
+    // create a function that gets the current weather (current weather data call)
+    // dynamically generate weather div
+    // inside of that you're going to generate the city, date, temperature, humidity, wind speed
+    
+    // call the getUVIndex function to generate the UV index element
+
+    // create 5DayForecast function
+    // inculde the dates, tehmp, humidity
+    // dynamically generate using js
+    // generate a card which include <p>,<img>,<h2>,<icon>
+
+    // store users search in localstorage
+    // on page load, grab from local storage - grab the most recent search
+    // if the users search exists in local storage dont append a new one, get from local storage
+    //  in the getCurrentWeather function, check local storage for previous searches
+    
+    
     </script>
   </body>
 </html>
