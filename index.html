@@ -32,19 +32,21 @@
       // grab users input and store it in a variable (stateSearch)
     // api key and query url
   
-    $("#searchBtn").on("click", function (state){
+    $("#searchBtn").on("click", function (name){
+    event.preventDefault();
     var APIKey = "096c47eea3eda324326ea249c70207ee";    
-    var city = $("#citySearch").val();  
-    var queryUrl = `https://api.openweathermap.org/data/2.5/weather?q=${state}&appid=${APIKey}`;
+    var name = $("#citySearch").val();  
+    var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${name}appid=${APIKey}`;
   
     $.ajax({
-            url: queryUrl,
+            url: queryURL,
             method: 'GET',
         }).then(function (response) {
         
-            console.log(queryUrl);
+            console.log(queryURL);
 
             console.log(response);
+            console.log(alert("search clicked"));
         })
 
     });
