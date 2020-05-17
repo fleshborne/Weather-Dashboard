@@ -1,3 +1,37 @@
 h1 {
   font-size: small;
 }
+.search {
+  position: relative;
+}
+.oneDayWeather {
+  display: inline-flexbox;
+  box-sizing: border-box;
+  float: right;
+  margin: 100px, 0px, 0px, 100px;
+  justify-content: center;
+}
+
+.cardCity {
+  position: relative;
+  margin: 0px;
+}
+
+#forcastDiv {
+  float: right;
+}
+#citySearch {
+  width: 225px;
+}
+/* change body with to 950px city button is 225*/
+/*   */
+@media screen and (max-width: 950px), screen and (max-height: 700px) {
+  .example {
+    width: 225px;
+  }
+}
+@media screen and (max-width: 600px), screen and (max-height: 700px) {
+  .example {
+    width: 150px;
+  }
+}
