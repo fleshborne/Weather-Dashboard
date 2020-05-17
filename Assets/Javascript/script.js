@@ -68,12 +68,13 @@ function searchOneDayWeather(name) {
     weatherDiv.appendTo(forecastEl);
     // call the getUVIndex function to generate the UV index element
     getUVIndex(lat, lon);
+    fiveDayForecast(name);
   });
 }
 function getUVIndex(lat, lon) {
   var appid = "096c47eea3eda324326ea249c70207ee";
-  var lat = lat;
-  var lon = lon;
+  //   var lat = lat;
+  //   var lon = lon;
   var queryURL = `http://api.openweathermap.org/data/2.5/uvi?appid=${appid}&lat=${lat}&lon=${lon}`;
 
   $.ajax({
@@ -81,6 +82,13 @@ function getUVIndex(lat, lon) {
     method: "GET",
   }).then(function (response) {
     console.log(response);
+    var UVIValue = response.value;
+    console.log(UVIValue);
+    weatherDiv = $("<div class='weather'>");
+    var forecastEl = $("#forecastDiv");
+    var pSix = $("<p>").text("UV Index: " + UVIValue);
+    weatherDiv.append(pSix);
+    weatherDiv.appendTo(forecastEl);
   });
 }
 $("#searchBtn").on("click", function (e) {
@@ -89,17 +97,35 @@ $("#searchBtn").on("click", function (e) {
 
   console.log(searchCriteria);
   searchOneDayWeather(searchCriteria);
-  //   getUVIndex(searchOneDayWeather);
+  //   getUVIndex(searchCriteria);
+  fiveDayForecast(searchCriteria);
 });
 
 // you can also call searchOneDayWeather from any other on click event
 $(".cityCard").on("click", function () {
   var searchCriteria = $(this).attr("data-name");
-  console.log(searchCriteria);
+  console.log(this);
   searchOneDayWeather(searchCriteria);
-  getUVIndex(searchCriteria);
+  //   getUVIndex(searchCriteria);
 });
+
 // create 5DayForecast function
+function fiveDayForecast(name) {
+  var APIKey = "096c47eea3eda324326ea249c70207ee";
+  var queryURL = `https://api.openweathermap.org/data/2.5/forecast?q=${name}&appid=${APIKey}`;
+  $.ajax({
+    url: queryURL,
+    method: "GET",
+  }).then(function (response) {
+    console.log(response);
+
+    var fiveDayForecast = $("#fiveDayForecast");
+    var dayOneCard = $("<div class='card'>");
+    var weatherDay = $("<p>").text("Date: " + response.list[0].dt_txt);
+    weatherDay.appendTo(dayOneCard);
+    dayOneCard.appendTo(fiveDayForecast);
+  });
+}
 // inculde the dates, tehmp, humidity
 // dynamically generate using js
 // generate a card which include <p>,<img>,<h2>,<icon>
