@@ -119,6 +119,7 @@ function fiveDayForecast(name) {
   }).then(function (response) {
     console.log(response);
     // create card deck and begin applying cards to fiveDayForecast
+
     var fiveDayForecast = $("#fiveDayForecast");
     $("#fiveDayForecast").addClass("card-deck");
     // give cards classes
@@ -134,8 +135,8 @@ function fiveDayForecast(name) {
     var weatherDayFour = $("<p>").text("Date: " + response.list[24].dt_txt);
     var weatherDayFive = $("<p>").text("Date: " + response.list[32].dt_txt);
 
-    var weatherImgOne = $("<img>");
-    weatherImgOne.attr("src", response.list[0].weather[0].icon + ".png");
+    var weatherImgOne = $("<img>").attr("src", response.list[0].weather);
+
     weatherImgOne.appendTo(dayOneCard);
     // append data
     weatherDayOne.appendTo(dayOneCard);
