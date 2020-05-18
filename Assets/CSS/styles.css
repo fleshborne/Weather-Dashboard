@@ -16,7 +16,12 @@ h1 {
   position: relative;
   margin: 0px;
 }
-
+.highUV {
+  background-color: red;
+}
+.lowUV {
+  background-color: lightblue;
+}
 #forcastDiv {
   float: right;
 }

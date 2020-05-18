@@ -17,7 +17,7 @@ for (var i = 0; i < cityWeather.length; i++) {
   a.attr("data-name", cityWeather[i]);
   $(".search").append(a);
 }
-
+// inculde the dates, tehmp, humidity
 function searchOneDayWeather(name) {
   //   e.preventDefault();
   console.log(name);
@@ -86,7 +86,18 @@ function getUVIndex(lat, lon) {
     console.log(UVIValue);
     weatherDiv = $("<div class='weather'>");
     var forecastEl = $("#forecastDiv");
-    var pSix = $("<p>").text("UV Index: " + UVIValue);
+    var pSix = $("<pSix>").text("UV Index: ");
+    var span = $("<span>").text(UVIValue);
+    span.attr("id", "UVIVal");
+    span.appendTo(pSix);
+    if (UVIValue < 10) {
+      //alert("hiuv");
+      span.addClass("lowUV");
+    } else {
+      //alert("louv");
+      span.addClass("highUV");
+    }
+
     weatherDiv.append(pSix);
     weatherDiv.appendTo(forecastEl);
   });
@@ -112,52 +123,37 @@ $(".cityCard").on("click", function () {
 // create 5DayForecast function
 function fiveDayForecast(name) {
   var APIKey = "096c47eea3eda324326ea249c70207ee";
-  var queryURL = `https://api.openweathermap.org/data/2.5/forecast?q=${name}&appid=${APIKey}`;
+  var queryURL = `https://api.openweathermap.org/data/2.5/forecast?q=${name}&appid=${APIKey}&units=imperial`;
   $.ajax({
     url: queryURL,
     method: "GET",
   }).then(function (response) {
     console.log(response);
     // create card deck and begin applying cards to fiveDayForecast
+    var results = response.list;
+    console.log(results);
+    for (var i = 0; i < results.length; i = i + 8) {
+      var fiveDayForecast = $("#fiveDayForecast");
+      var weatherCard = $("<div class='weatherDiv'>");
+      var p1 = $("<h2>").text(moment(results[i].dt_txt).format("MMM Do, YYYY"));
+      var p2 = $("<p>").text("Temp: " + results[i].main.temp);
+      var iconImg = $("<img>").attr(
+        "src",
+        "http://openweathermap.org/img/wn/" +
+          results[i].weather[0].icon +
+          ".png"
+      );
+      var p3 = $("<p>").text("Humidity: " + results[i].main.humidity);
 
-    var fiveDayForecast = $("#fiveDayForecast");
-    $("#fiveDayForecast").addClass("card-deck");
-    // give cards classes
-    var dayOneCard = $("<div class='card col-md-4'>");
-    var dayTwoCard = $("<div class='card col-md-4'>");
-    var dayThreeCard = $("<div class='card col-md-4'>");
-    var dayFourCard = $("<div class='card col-md-4'>");
-    var dayFiveCard = $("<div class='card col-md-4'>");
-    // pull the data from response object
-    var weatherDayOne = $("<p>").text("Date: " + response.list[0].dt_txt);
-    // var weatherForecastOne = $("<p>").text("Temp: " + response.list[0])
-    var weatherDayTwo = $("<p>").text("Date: " + response.list[8].dt_txt);
-    var weatherDayThree = $("<p>").text("Date: " + response.list[16].dt_txt);
-    var weatherDayFour = $("<p>").text("Date: " + response.list[24].dt_txt);
-    var weatherDayFive = $("<p>").text("Date: " + response.list[32].dt_txt);
+      p1.appendTo(weatherCard);
+      iconImg.appendTo(weatherCard);
+      p2.appendTo(weatherCard);
 
-    // var weatherImgOne = $("<img>").attr("src", response.list[0].weather);
-
-    // weatherImgOne.appendTo(dayOneCard);
-    // append data
-    weatherDayOne.appendTo(dayOneCard);
-    dayOneCard.appendTo(fiveDayForecast);
-
-    weatherDayTwo.appendTo(dayTwoCard);
-    dayTwoCard.appendTo(fiveDayForecast);
-
-    weatherDayThree.appendTo(dayThreeCard);
-    dayThreeCard.appendTo(fiveDayForecast);
-
-    weatherDayFour.appendTo(dayFourCard);
-    dayFourCard.appendTo(fiveDayForecast);
-
-    weatherDayFive.appendTo(dayFiveCard);
-    dayFiveCard.appendTo(fiveDayForecast);
-
-    // var
+      p3.appendTo(weatherCard);
+      fiveDayForecast.append(weatherCard);
+    }
   });
 }
-// inculde the dates, tehmp, humidity
+
 // dynamically generate using js
 // generate a card which include <p>,<img>,<h2>,<icon>
