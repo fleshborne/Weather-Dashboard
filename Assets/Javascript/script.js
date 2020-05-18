@@ -135,7 +135,7 @@ function fiveDayForecast(name) {
     var weatherDayFive = $("<p>").text("Date: " + response.list[32].dt_txt);
 
     var weatherImgOne = $("<img>");
-    weatherImgOne.attr("src", response.list[0].weather[0], ".png");
+    weatherImgOne.attr("src", response.list[0].weather[0].icon + ".png");
     weatherImgOne.appendTo(dayOneCard);
     // append data
     weatherDayOne.appendTo(dayOneCard);
