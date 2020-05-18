@@ -98,7 +98,7 @@ $("#searchBtn").on("click", function (e) {
   console.log(searchCriteria);
   searchOneDayWeather(searchCriteria);
   //   getUVIndex(searchCriteria);
-  fiveDayForecast(searchCriteria);
+  //   fiveDayForecast(searchCriteria);
 });
 
 // you can also call searchOneDayWeather from any other on click event
@@ -118,12 +118,38 @@ function fiveDayForecast(name) {
     method: "GET",
   }).then(function (response) {
     console.log(response);
-
+    // create card deck and begin applying cards to fiveDayForecast
     var fiveDayForecast = $("#fiveDayForecast");
-    var dayOneCard = $("<div class='card'>");
-    var weatherDay = $("<p>").text("Date: " + response.list[0].dt_txt);
-    weatherDay.appendTo(dayOneCard);
+    $("#fiveDayForecast").addClass("card-deck");
+    // give cards classes
+    var dayOneCard = $("<div class='card col-md-4'>");
+    var dayTwoCard = $("<div class='card col-md-4'>");
+    var dayThreeCard = $("<div class='card col-md-4'>");
+    var dayFourCard = $("<div class='card col-md-4'>");
+    var dayFiveCard = $("<div class='card col-md-4'>");
+    // pull the data from response object
+    var weatherDayOne = $("<p>").text("Date: " + response.list[0].dt_txt);
+    var weatherDayTwo = $("<p>").text("Date: " + response.list[8].dt_txt);
+    var weatherDayThree = $("<p>").text("Date: " + response.list[16].dt_txt);
+    var weatherDayFour = $("<p>").text("Date: " + response.list[24].dt_txt);
+    var weatherDayFive = $("<p>").text("Date: " + response.list[32].dt_txt);
+
+    var weatherImgOne = $("<img>");
+    weatherImgOne.attr("src", response.list[0].weather[0], ".png");
+    weatherImgOne.appendTo(dayOneCard);
+    // append data
+    weatherDayOne.appendTo(dayOneCard);
     dayOneCard.appendTo(fiveDayForecast);
+    weatherDayTwo.appendTo(dayTwoCard);
+    dayTwoCard.appendTo(fiveDayForecast);
+    weatherDayThree.appendTo(dayThreeCard);
+    dayThreeCard.appendTo(fiveDayForecast);
+    weatherDayFour.appendTo(dayFourCard);
+    dayFourCard.appendTo(fiveDayForecast);
+    weatherDayFive.appendTo(dayFiveCard);
+    dayFiveCard.appendTo(fiveDayForecast);
+
+    // var
   });
 }
 // inculde the dates, tehmp, humidity
