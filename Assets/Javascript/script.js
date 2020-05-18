@@ -130,23 +130,28 @@ function fiveDayForecast(name) {
     var dayFiveCard = $("<div class='card col-md-4'>");
     // pull the data from response object
     var weatherDayOne = $("<p>").text("Date: " + response.list[0].dt_txt);
+    // var weatherForecastOne = $("<p>").text("Temp: " + response.list[0])
     var weatherDayTwo = $("<p>").text("Date: " + response.list[8].dt_txt);
     var weatherDayThree = $("<p>").text("Date: " + response.list[16].dt_txt);
     var weatherDayFour = $("<p>").text("Date: " + response.list[24].dt_txt);
     var weatherDayFive = $("<p>").text("Date: " + response.list[32].dt_txt);
 
-    var weatherImgOne = $("<img>").attr("src", response.list[0].weather);
+    // var weatherImgOne = $("<img>").attr("src", response.list[0].weather);
 
-    weatherImgOne.appendTo(dayOneCard);
+    // weatherImgOne.appendTo(dayOneCard);
     // append data
     weatherDayOne.appendTo(dayOneCard);
     dayOneCard.appendTo(fiveDayForecast);
+
     weatherDayTwo.appendTo(dayTwoCard);
     dayTwoCard.appendTo(fiveDayForecast);
+
     weatherDayThree.appendTo(dayThreeCard);
     dayThreeCard.appendTo(fiveDayForecast);
+
     weatherDayFour.appendTo(dayFourCard);
     dayFourCard.appendTo(fiveDayForecast);
+
     weatherDayFive.appendTo(dayFiveCard);
     dayFiveCard.appendTo(fiveDayForecast);
 
