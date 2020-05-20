@@ -1,6 +1,7 @@
-# Blake Thompson
+# Blake Thompson Weather-Dashboard
 
-# Weather-Dashboard
+Week 8
+Due: May 17, 2020
 
 # Technologies Used
 
@@ -21,4 +22,5 @@ THEN the user can click that card and obtain that forecast again
 
 # Visuals
 
-![Dashboard Demo](Assets\Images\127.0.0.1_5500_.png)
+![Dashboard Picture](Assets\Images\127.0.0.1_5500_.png)
+![Dashboard Demo](Assets\Images\2020-05-20_13-52-53.gif)
