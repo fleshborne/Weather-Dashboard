@@ -22,5 +22,5 @@ THEN the user can click that card and obtain that forecast again
 
 # Visuals
 
-![Dashboard Picture](Assets\Images\127.0.0.1_5500_.png)
-![Dashboard Demo](Assets\Images\2020-05-20_13-52-53.gif)
+![Dashboard Picture](https://github.com/fleshborne/Weather-Dashboard/blob/master/Assets/Images/127.0.0.1_5500_.png)
+![Dashboard Demo](https://github.com/fleshborne/Weather-Dashboard/blob/master/Assets/Images/2020-05-20_13-52-53.gif)
