@@ -21,4 +21,4 @@ THEN the user can click that card and obtain that forecast again
 
 # Visuals
 
-[TBD](#)
+![Dashboard Demo](Assets\Images\127.0.0.1_5500_.png)
