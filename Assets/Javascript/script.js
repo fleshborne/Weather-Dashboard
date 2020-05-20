@@ -19,12 +19,11 @@ for (var i = 0; i < cityWeather.length; i++) {
 }
 // inculde the dates, tehmp, humidity
 function searchOneDayWeather(name) {
-  //   e.preventDefault();
   console.log(name);
   // grab users input and store it in a variable (stateSearch)
   // api key and query url
   var APIKey = "096c47eea3eda324326ea249c70207ee";
-  //   var name = $("#citySearch").val();
+
   var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${name}&appid=${APIKey}&units=imperial`;
 
   if (cityWeather.indexOf(name) === -1) {
@@ -73,8 +72,7 @@ function searchOneDayWeather(name) {
 }
 function getUVIndex(lat, lon) {
   var appid = "096c47eea3eda324326ea249c70207ee";
-  //   var lat = lat;
-  //   var lon = lon;
+
   var queryURL = `http://api.openweathermap.org/data/2.5/uvi?appid=${appid}&lat=${lat}&lon=${lon}`;
 
   $.ajax({
@@ -92,10 +90,8 @@ function getUVIndex(lat, lon) {
     span.attr("id", "UVIVal");
     span.appendTo(pSix);
     if (UVIValue < 10) {
-      //alert("hiuv");
       span.addClass("lowUV");
     } else {
-      //alert("louv");
       span.addClass("highUV");
     }
 
@@ -109,8 +105,6 @@ $("#searchBtn").on("click", function (e) {
 
   console.log(searchCriteria);
   searchOneDayWeather(searchCriteria);
-  //   getUVIndex(searchCriteria);
-  //   fiveDayForecast(searchCriteria);
 });
 
 // you can also call searchOneDayWeather from any other on click event
@@ -118,7 +112,6 @@ $(".cityCard").on("click", function () {
   var searchCriteria = $(this).attr("data-name");
   console.log(this);
   searchOneDayWeather(searchCriteria);
-  //   getUVIndex(searchCriteria);
 });
 
 // create 5DayForecast function
