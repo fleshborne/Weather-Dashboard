@@ -86,6 +86,7 @@ function getUVIndex(lat, lon) {
     console.log(UVIValue);
     weatherDiv = $("<div class='weather'>");
     var forecastEl = $("#forecastDiv");
+
     var pSix = $("<pSix>").text("UV Index: ");
     var span = $("<span>").text(UVIValue);
     span.attr("id", "UVIVal");
@@ -144,7 +145,7 @@ function fiveDayForecast(name) {
           ".png"
       );
       var p3 = $("<p>").text("Humidity: " + results[i].main.humidity);
-
+      weatherCard.empty();
       p1.appendTo(weatherCard);
       iconImg.appendTo(weatherCard);
       p2.appendTo(weatherCard);

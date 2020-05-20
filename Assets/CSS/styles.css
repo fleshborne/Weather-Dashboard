@@ -22,11 +22,27 @@ h1 {
 .lowUV {
   background-color: lightblue;
 }
-#forcastDiv {
-  float: right;
+#forecastDiv {
+  background: skyblue;
+  border-style: double;
+  display: table-cell;
+  position: relative;
+  width: 260px;
+  display: flow-root;
 }
+
+.weatherDiv {
+  border-style: solid;
+  padding: 20px;
+}
+
 #citySearch {
   width: 225px;
+}
+#fiveDayForecast {
+  display: flex;
+  background: skyblue;
+  border-style: double;
 }
 /* change body with to 950px city button is 225*/
 /*   */
