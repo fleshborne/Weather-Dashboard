@@ -68,7 +68,7 @@ function searchOneDayWeather(name) {
     weatherDiv.appendTo(forecastEl);
     // call the getUVIndex function to generate the UV index element
     getUVIndex(lat, lon);
-    fiveDayForecast(name);
+    fiveDayForecasts(name);
   });
 }
 function getUVIndex(lat, lon) {
@@ -122,7 +122,7 @@ $(".cityCard").on("click", function () {
 });
 
 // create 5DayForecast function
-function fiveDayForecast(name) {
+function fiveDayForecasts(name) {
   var APIKey = "096c47eea3eda324326ea249c70207ee";
   var queryURL = `https://api.openweathermap.org/data/2.5/forecast?q=${name}&appid=${APIKey}&units=imperial`;
   $.ajax({
@@ -133,6 +133,7 @@ function fiveDayForecast(name) {
     // create card deck and begin applying cards to fiveDayForecast
     var results = response.list;
     console.log(results);
+    $("#fiveDayForecast").empty();
     for (var i = 0; i < results.length; i = i + 8) {
       var fiveDayForecast = $("#fiveDayForecast");
       var weatherCard = $("<div class='weatherDiv'>");
@@ -145,7 +146,7 @@ function fiveDayForecast(name) {
           ".png"
       );
       var p3 = $("<p>").text("Humidity: " + results[i].main.humidity);
-      weatherCard.empty();
+
       p1.appendTo(weatherCard);
       iconImg.appendTo(weatherCard);
       p2.appendTo(weatherCard);
